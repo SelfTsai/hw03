@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+    
+    <script>
+        
+        var arr = [85, 60, 99, 49, 77, 82];        
+        
+        var selection = d3.select('body').selectAll('div').data(arr);
+        selection.enter().append('div');
+        selection.exit().remove();
+        
+        d3
+        .selectAll('div')
+        .text(function(data, i){
+            return i + ': ' + data;   
+        })
+        .style('color', function(data){
+            return (data < 70) ? 'red' : 'black';
+        });  
+    </script>
+    
+    <hr>
+    
+      <svg witdh="600" height="5000"></svg>
+      
+    <script>
+   d3.json('invoice-taipei.json', function(dataSet){
+            console.log(dataSet);
+            
+    
+        var body = d3.select("body")
+        var count=0;
+            
+            for (var i=0; i<dataSet.length; i++){
+                if( dataSet[i].date=="2016/8/1" && dataSet[i].city=="臺北市" && dataSet[i].amount > 1000000000 ){
+                    
+                    d3.select("svg")
+                      .append("text")
+                      .attr("x",0)
+                      .attr("y",20+12*count)
+                      .attr("font-size","12")
+                      .text(dataSet[i].industry)
+                    
+                    d3.select("svg")
+                      .append("rect")
+                      .attr("x",200)
+                      .attr("y",10+12*count)
+                      .attr("width",dataSet[i].amount/100000000)
+                      .attr("height",10)
+                      .attr("fill","red")
+                    
+//                    d3
+//                    .select("svg")
+//                    .append("text")
+//                    .attr("x", 200+dataSet[i].amount/100000000+10)
+//                    .attr("y", 20+12*validData)
+//                    .attr("font-size", '12').text(dataSet[i].amount);
+                
+                    count++;
+                    
+                }
+            }
+        });
+       
+            
+    </script>
+    
+
+    
+
+</body>
+</html>
