@@ -28,7 +28,7 @@
     <hr>
  <br>   
  <br>
-     <svg witdh="600" height="600" id="svg"></svg>
+     <svg witdh="800" height="3000" id="svg"></svg>
       
     <script>
    d3.json('invoice-taipei.json', function(dataSet){
@@ -55,13 +55,7 @@
                       .attr("width",dataSet[i].amount/100000000)
                       .attr("height",10)
                       .attr("fill","red")
-                    
-//                    d3
-//                    .select("svg")
-//                    .append("text")
-//                    .attr("x", 200+dataSet[i].amount/100000000+10)
-//                    .attr("y", 20+12*validData)
-//                    .attr("font-size", '12').text(dataSet[i].amount);
+                   
                 
                     count++;
                     
